@@ -1,5 +1,5 @@
-import 'package:fancy_dio_inspector/src/theme/theme.dart';
-import 'package:fancy_dio_inspector/src/utils/helpers/clipboard_helper.dart';
+import 'package:fancy_dio_inspector_personal/src/theme/theme.dart';
+import 'package:fancy_dio_inspector_personal/src/utils/helpers/clipboard_helper.dart';
 import 'package:flutter/material.dart';
 
 extension ThemeExtensions on BuildContext {

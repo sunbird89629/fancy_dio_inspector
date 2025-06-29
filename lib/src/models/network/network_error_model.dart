@@ -1,5 +1,5 @@
-import 'package:fancy_dio_inspector/src/models/network/network_base_model.dart';
-import 'package:fancy_dio_inspector/src/utils/extensions/extensions.dart';
+import 'package:fancy_dio_inspector_personal/src/models/network/network_base_model.dart';
+import 'package:fancy_dio_inspector_personal/src/utils/extensions/extensions.dart';
 
 class NetworkErrorModel extends NetworkBaseModel {
   final String statusCode;

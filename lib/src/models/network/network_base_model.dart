@@ -1,4 +1,4 @@
-import 'package:fancy_dio_inspector/src/utils/helpers/clipboard_helper.dart';
+import 'package:fancy_dio_inspector_personal/src/utils/helpers/clipboard_helper.dart';
 
 /// This is the base model for all the network models.
 abstract class NetworkBaseModel {

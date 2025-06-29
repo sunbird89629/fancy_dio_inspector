@@ -1,5 +1,5 @@
-import 'package:fancy_dio_inspector/src/l10n/l10n.dart';
-import 'package:fancy_dio_inspector/src/utils/enums/enums.dart';
+import 'package:fancy_dio_inspector_personal/src/l10n/l10n.dart';
+import 'package:fancy_dio_inspector_personal/src/utils/enums/enums.dart';
 
 class FancyDioInspectorConsoleOptions {
   /// It controls whether to log to the console or not.

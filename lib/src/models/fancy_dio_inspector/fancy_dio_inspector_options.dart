@@ -1,4 +1,4 @@
-import 'package:fancy_dio_inspector/src/models/fancy_dio_inspector/fancy_dio_inspector.dart';
+import 'package:fancy_dio_inspector_personal/src/models/fancy_dio_inspector/fancy_dio_inspector.dart';
 
 /// This is used to configure the `FancyDioInspector` package.
 class FancyDioInspectorOptions {

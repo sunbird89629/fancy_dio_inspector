@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
-import 'package:fancy_dio_inspector/src/utils/extensions/extensions.dart';
+import 'package:fancy_dio_inspector_personal/src/utils/extensions/extensions.dart';
 
 extension RequestExtensions on RequestOptions {
   String createUrlComponent() {

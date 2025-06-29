@@ -1,4 +1,4 @@
-import 'package:fancy_dio_inspector/src/l10n/l10n.dart';
+import 'package:fancy_dio_inspector_personal/src/l10n/l10n.dart';
 import 'package:flutter/material.dart';
 
 class FancyElevatedButton extends StatelessWidget {

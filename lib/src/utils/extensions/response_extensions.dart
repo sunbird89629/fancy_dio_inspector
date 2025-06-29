@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:fancy_dio_inspector/src/utils/enums/enums.dart';
-import 'package:fancy_dio_inspector/src/utils/extensions/extensions.dart';
+import 'package:fancy_dio_inspector_personal/src/utils/enums/enums.dart';
+import 'package:fancy_dio_inspector_personal/src/utils/extensions/extensions.dart';
 
 extension ResponseExtensions on Response<dynamic> {
   String createUrlComponent() {

@@ -1,4 +1,4 @@
-import 'package:fancy_dio_inspector/src/l10n/fancy_strings.dart';
+import 'package:fancy_dio_inspector_personal/src/l10n/fancy_strings.dart';
 
 class FancyDioInspectorL10nOptions {
   /// [appBarText] is used to change the text of the app bar. Defaults to

@@ -1,4 +1,4 @@
-import 'package:fancy_dio_inspector/src/utils/extensions/extensions.dart';
+import 'package:fancy_dio_inspector_personal/src/utils/extensions/extensions.dart';
 
 extension DateTimeExtensions on DateTime {
   String toFormattedString() {

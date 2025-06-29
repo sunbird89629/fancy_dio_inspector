@@ -1,4 +1,4 @@
-import 'package:fancy_dio_inspector/src/theme/theme.dart';
+import 'package:fancy_dio_inspector_personal/src/theme/theme.dart';
 import 'package:flutter/material.dart';
 
 mixin FancyThemeData {

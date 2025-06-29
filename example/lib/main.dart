@@ -3,7 +3,7 @@ import 'package:example/models/login_request.dart';
 import 'package:example/models/login_response.dart';
 
 /// Import the `fancy_dio_inspector` package.
-import 'package:fancy_dio_inspector/fancy_dio_inspector.dart';
+import 'package:fancy_dio_inspector_personal/fancy_dio_inspector.dart';
 import 'package:flutter/material.dart';
 
 void main() {

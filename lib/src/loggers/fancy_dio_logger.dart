@@ -1,9 +1,9 @@
 import 'dart:developer' as developer;
 
 import 'package:dio/dio.dart';
-import 'package:fancy_dio_inspector/src/models/models.dart';
-import 'package:fancy_dio_inspector/src/utils/enums/enums.dart';
-import 'package:fancy_dio_inspector/src/utils/extensions/extensions.dart';
+import 'package:fancy_dio_inspector_personal/src/models/models.dart';
+import 'package:fancy_dio_inspector_personal/src/utils/enums/enums.dart';
+import 'package:fancy_dio_inspector_personal/src/utils/extensions/extensions.dart';
 import 'package:flutter/foundation.dart';
 
 /// A fancy logger that logs network requests, responses and errors.

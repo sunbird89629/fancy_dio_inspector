@@ -1,7 +1,7 @@
 // ignore_for_file: cascade_invocations
 
-import 'package:fancy_dio_inspector/src/l10n/l10n.dart';
-import 'package:fancy_dio_inspector/src/models/network/network.dart';
+import 'package:fancy_dio_inspector_personal/src/l10n/l10n.dart';
+import 'package:fancy_dio_inspector_personal/src/models/network/network.dart';
 import 'package:flutter/services.dart';
 
 mixin ClipboardHelper {

@@ -1,6 +1,6 @@
-import 'package:fancy_dio_inspector/src/models/models.dart';
-import 'package:fancy_dio_inspector/src/ui/widgets/widgets.dart';
-import 'package:fancy_dio_inspector/src/utils/extensions/extensions.dart';
+import 'package:fancy_dio_inspector_personal/src/models/models.dart';
+import 'package:fancy_dio_inspector_personal/src/ui/widgets/widgets.dart';
+import 'package:fancy_dio_inspector_personal/src/utils/extensions/extensions.dart';
 import 'package:flutter/material.dart';
 
 typedef FancyItemCustomButtonBuilder = FancyElevatedButton Function(

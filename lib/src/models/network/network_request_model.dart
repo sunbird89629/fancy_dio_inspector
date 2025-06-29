@@ -1,4 +1,4 @@
-import 'package:fancy_dio_inspector/src/models/network/network_base_model.dart';
+import 'package:fancy_dio_inspector_personal/src/models/network/network_base_model.dart';
 
 class NetworkRequestModel extends NetworkBaseModel {
   const NetworkRequestModel({

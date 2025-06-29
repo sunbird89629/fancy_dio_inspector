@@ -1,20 +1,18 @@
-name: fancy_dio_inspector
-description: A HTTP inspector for Dio. It allows you to log & copy cURL of every request, response or error.
+name: fancy_dio_inspector_personal
+description: A modified version of the Dio HTTP inspector, forked from the original fancy_dio_inspector.
+homepage: https://github.com/your_username/your_repo
+repository: https://github.com/your_username/your_repo
+issue_tracker: https://github.com/your_username/your_repo/issues
 
-maintainer: Gökhan Çavuş
-homepage: https://github.com/gokhancvs/fancy_dio_inspector
-repository: https://github.com/gokhancvs/fancy_dio_inspector
-issue_tracker: https://github.com/gokhancvs/fancy_dio_inspector/issues
-
-version: 1.7.0
+version: 1.0.0
 
 screenshots:
-  - description: 'Fancy Dio Inspector'
+  - description: "Fancy Dio Inspector"
     path: assets/screenshots/screenshot_1.png
 
 environment:
-  sdk: '>=2.17.6 <4.0.0'
-  flutter: '>=3.0.5'
+  sdk: ">=2.17.6 <4.0.0"
+  flutter: ">=3.0.5"
 
 dependencies:
   dio: ^5.4.1
