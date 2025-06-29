@@ -6,12 +6,14 @@ class FancyDioTabView<T extends NetworkBaseModel> extends StatefulWidget {
   final FancyDioInspectorTileOptions tileOptions;
   final FancyDioInspectorL10nOptions l10nOptions;
   final List<T> components;
+  final FancyItemCustomButtonBuilder? customButtonBuilder;
 
   const FancyDioTabView({
     required this.tileOptions,
     required this.l10nOptions,
     required this.components,
     super.key,
+    this.customButtonBuilder,
   });
 
   @override
@@ -65,6 +67,7 @@ class _FancyDioTabViewState<T extends NetworkBaseModel>
                   component: filteredComponent,
                   l10nOptions: widget.l10nOptions,
                   tileOptions: widget.tileOptions,
+                  customButtonBuilder: widget.customButtonBuilder,
                 ),
               );
             },

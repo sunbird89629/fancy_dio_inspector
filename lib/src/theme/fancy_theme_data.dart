@@ -5,7 +5,6 @@ mixin FancyThemeData {
   static final ThemeData light = ThemeData.light().copyWith(
     colorScheme: ColorScheme.fromSeed(seedColor: FancyColors.turquoise),
     primaryColor: FancyColors.turquoise,
-    indicatorColor: FancyColors.darkCyan,
     appBarTheme: const AppBarTheme(
       backgroundColor: FancyColors.turquoise,
       elevation: 0,
@@ -14,7 +13,7 @@ mixin FancyThemeData {
       backgroundColor: FancyColors.turquoise,
       elevation: 0,
     ),
-    tabBarTheme: const TabBarTheme(
+    tabBarTheme: const TabBarThemeData(
       labelColor: FancyColors.white,
       unselectedLabelColor: FancyColors.white,
     ),

@@ -3,16 +3,23 @@ import 'package:fancy_dio_inspector/src/ui/widgets/widgets.dart';
 import 'package:fancy_dio_inspector/src/utils/extensions/extensions.dart';
 import 'package:flutter/material.dart';
 
+typedef FancyItemCustomButtonBuilder = FancyElevatedButton Function(
+  BuildContext context,
+);
+
 class FancyDioTabViewItem<T extends NetworkBaseModel> extends StatelessWidget {
   final T component;
   final FancyDioInspectorTileOptions tileOptions;
   final FancyDioInspectorL10nOptions l10nOptions;
+
+  final FancyItemCustomButtonBuilder? customButtonBuilder;
 
   const FancyDioTabViewItem({
     required this.component,
     required this.tileOptions,
     required this.l10nOptions,
     super.key,
+    this.customButtonBuilder,
   });
 
   String get time {
@@ -38,33 +45,7 @@ class FancyDioTabViewItem<T extends NetworkBaseModel> extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         if (tileOptions.showButtons) ...[
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              Expanded(
-                child: FancyElevatedButton.cURL(
-                  text: l10nOptions.cURLText,
-                  onPressed: () {
-                    context
-                      ..showSnackBar(l10nOptions.cURLCopiedText)
-                      ..copyToClipboard(component.cURL);
-                  },
-                ),
-              ),
-              const FancyGap.medium(),
-              Expanded(
-                child: FancyElevatedButton.copy(
-                  text: l10nOptions.copyText,
-                  onPressed: () {
-                    context
-                      ..showSnackBar(l10nOptions.copiedText)
-                      ..copyToClipboard(component.toClipboardText());
-                  },
-                ),
-              ),
-            ],
-          ),
-          const FancyGap.medium(),
+          _buildItemButtons(context),
         ],
         FancyDioTile(
           title: '${l10nOptions.urlTitleText} (${component.method})',
@@ -97,6 +78,38 @@ class FancyDioTabViewItem<T extends NetworkBaseModel> extends StatelessWidget {
           options: tileOptions,
         ),
       ],
+    );
+  }
+
+  Row _buildItemButtons(BuildContext context) {
+    final buttons = <Widget>[
+      Expanded(
+        child: FancyElevatedButton.cURL(
+          text: l10nOptions.cURLText,
+          onPressed: () {
+            context
+              ..showSnackBar(l10nOptions.cURLCopiedText)
+              ..copyToClipboard(component.cURL);
+          },
+        ),
+      ),
+      Expanded(
+        child: FancyElevatedButton.copy(
+          text: l10nOptions.copyText,
+          onPressed: () {
+            context
+              ..showSnackBar(l10nOptions.copiedText)
+              ..copyToClipboard(component.toClipboardText());
+          },
+        ),
+      ),
+    ];
+    if (customButtonBuilder != null) {
+      buttons.add(customButtonBuilder!(context));
+    }
+    return Row(
+      spacing: 20,
+      children: buttons,
     );
   }
 }

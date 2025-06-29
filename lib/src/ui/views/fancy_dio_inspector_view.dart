@@ -24,6 +24,8 @@ class FancyDioInspectorView extends StatelessWidget {
   /// used.
   final ThemeData? themeData;
 
+  final FancyItemCustomButtonBuilder? customButtonBuilder;
+
   const FancyDioInspectorView({
     this.tileOptions = const FancyDioInspectorTileOptions(),
     this.l10nOptions = const FancyDioInspectorL10nOptions(),
@@ -31,6 +33,7 @@ class FancyDioInspectorView extends StatelessWidget {
     this.actions,
     this.themeData,
     super.key,
+    this.customButtonBuilder,
   });
 
   FancyDioLogger get _logger => FancyDioLogger.instance;
@@ -61,16 +64,19 @@ class FancyDioInspectorView extends StatelessWidget {
         components: _requests,
         l10nOptions: l10nOptions,
         tileOptions: tileOptions,
+        customButtonBuilder: customButtonBuilder,
       ),
       FancyDioTabView(
         components: _responses,
         l10nOptions: l10nOptions,
         tileOptions: tileOptions,
+        customButtonBuilder: customButtonBuilder,
       ),
       FancyDioTabView(
         components: _errors,
         l10nOptions: l10nOptions,
         tileOptions: tileOptions,
+        customButtonBuilder: customButtonBuilder,
       ),
     ];
 
