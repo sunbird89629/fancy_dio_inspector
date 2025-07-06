@@ -37,6 +37,10 @@ class _MyAppState extends State<MyApp> {
     }
   }
 
+  Future<void> mockSuccessHttpRequest() async {
+    final response = await DioClient.instance.mockSuccessHttpRequest();
+  }
+
   void openDioInspector(BuildContext context) {
     Navigator.push(
       context,
@@ -61,26 +65,28 @@ class _MyAppState extends State<MyApp> {
               children: [
                 const Text('Fancy Dio Inspector'),
                 const SizedBox(height: 16),
+                const SizedBox(height: 8),
+                ElevatedButton(
+                  onPressed: mockSuccessHttpRequest,
+                  child: const Text('Mock success Http'),
+                ),
+                ElevatedButton(
+                  onPressed: login,
+                  child: const Text('Mock error Http Request'),
+                ),
+                ElevatedButton(
+                  onPressed: login,
+                  child: const Text('Success Login'),
+                ),
+                ElevatedButton(
+                  onPressed: () => login(success: false),
+                  child: const Text('Error Login'),
+                ),
+                const SizedBox(height: 4),
                 ElevatedButton(
                   onPressed: () => openDioInspector(context),
                   child: const Text('Open FancyDioInspectorView'),
                 ),
-                const SizedBox(height: 8),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    ElevatedButton(
-                      onPressed: login,
-                      child: const Text('Success Login'),
-                    ),
-                    const SizedBox(width: 8),
-                    ElevatedButton(
-                      onPressed: () => login(success: false),
-                      child: const Text('Error Login'),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 4),
                 Text('Token: $token'),
               ],
             ),
@@ -119,6 +125,16 @@ class DioClient {
     try {
       final response = await _dio.post('/login', data: request.toJson());
       return LoginResponse.fromJson(response.data);
+    } catch (e) {
+      return null;
+    }
+  }
+
+  Future<dynamic> mockSuccessHttpRequest() async {
+    const url = "https://api.test.yoofinds.com/api/campaign-products/qMjYbP";
+    try {
+      final response = await _dio.get(url);
+      return response;
     } catch (e) {
       return null;
     }
