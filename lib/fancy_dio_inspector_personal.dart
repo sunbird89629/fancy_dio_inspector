@@ -7,4 +7,5 @@ export 'src/models/fancy_dio_inspector/fancy_dio_inspector_options.dart';
 export 'src/models/fancy_dio_inspector/fancy_dio_inspector_tile_options.dart';
 export 'src/typedefs/typedefs.dart';
 export 'src/ui/views/views.dart';
+export 'src/ui/widgets/fancy_elevated_button.dart';
 export 'src/utils/enums/fancy_console_colors.dart';
