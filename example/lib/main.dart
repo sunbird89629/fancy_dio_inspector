@@ -45,6 +45,17 @@ class _MyAppState extends State<MyApp> {
     Navigator.push(
       context,
       MaterialPageRoute(
+        builder: (context) => FancyDioInspectorView(
+          leading: CloseButton(onPressed: Navigator.of(context).pop),
+        ),
+      ),
+    );
+  }
+
+  void openHttpScopePage(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
         builder: (context) => HttpScopeView(
           leading: CloseButton(onPressed: Navigator.of(context).pop),
         ),
@@ -84,7 +95,8 @@ class _MyAppState extends State<MyApp> {
                 ),
                 const SizedBox(height: 4),
                 ElevatedButton(
-                  onPressed: () => openDioInspector(context),
+                  // onPressed: () => openDioInspector(context),
+                  onPressed: () => openHttpScopePage(context),
                   child: const Text('Open FancyDioInspectorView'),
                 ),
                 Text('Token: $token'),

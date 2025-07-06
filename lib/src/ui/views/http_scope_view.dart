@@ -1,5 +1,6 @@
 import 'package:fancy_dio_inspector_personal/src/loggers/fancy_dio_logger.dart';
 import 'package:fancy_dio_inspector_personal/src/models/models.dart';
+import 'package:fancy_dio_inspector_personal/src/ui/views/http_detail_page.dart';
 import 'package:fancy_dio_inspector_personal/src/ui/widgets/widgets.dart';
 import 'package:fancy_dio_inspector_personal/src/utils/extensions/extensions.dart';
 import 'package:flutter/material.dart';
@@ -41,6 +42,8 @@ class HttpScopeView extends StatelessWidget {
   List<NetworkRequestModel> get _requests => _logger.apiRequests;
   List<NetworkResponseModel> get _responses => _logger.apiResponses;
   List<NetworkErrorModel> get _errors => _logger.apiErrors;
+
+  List<NetworkBaseModel> get _responseAndErrors => [..._responses, ..._errors];
 
   @override
   Widget build(BuildContext context) {
@@ -88,13 +91,35 @@ class HttpScopeView extends StatelessWidget {
           appBar: AppBar(
             centerTitle: true,
             title: Text(l10nOptions.appBarText),
-            bottom: TabBar(tabs: tabs),
+            // bottom: TabBar(tabs: tabs),
             leading: leading,
             actions: actions,
           ),
-          body: TabBarView(children: tabBarViews),
+          // body: TabBarView(children: tabBarViews),
+          body: _buildBody(),
         ),
       ),
+    );
+  }
+
+  Widget _buildBody() {
+    return ListView.separated(
+      itemBuilder: (context, index) {
+        final model = _responseAndErrors[index];
+        return ListTile(
+          title: Text(model.url),
+          onTap: () {
+            // 假设你有一个详情页，比如 NetworkDetailPage
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => HttpDetailPage(model: model),
+              ),
+            );
+          },
+        );
+      },
+      separatorBuilder: (context, index) => const Divider(height: 3),
+      itemCount: _responseAndErrors.length,
     );
   }
 }
