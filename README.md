@@ -3,8 +3,7 @@
 A [Dio](https://pub.dev/packages/dio) inspector that allows you to log & copy every request, response and error.
 
 > this fork is for [sunbird89629](https://github.com/sunbird89629) personal use.
-
-> thanks for [fancy_dio_inspector](https://github.com/gokhancvs/fancy_dio_inspector)!!!
+> thanks for [fancy_dio_inspector](https://github.com/gokhancvs/fancy_dio_inspector)
 
 <img src="https://raw.githubusercontent.com/gokhancvs/fancy_dio_inspector/main/assets/screenshots/screenshot_1.png" height="500px">
 

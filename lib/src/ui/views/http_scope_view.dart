@@ -47,67 +47,68 @@ class HttpScopeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final tabs = [
-      Tab(
-        text: l10nOptions.requestsText,
-        icon: const Icon(Icons.network_check),
-      ),
-      Tab(
-        text: l10nOptions.responsesText,
-        icon: const Icon(Icons.list),
-      ),
-      Tab(
-        text: l10nOptions.errorsText,
-        icon: const Icon(Icons.error),
-      ),
-    ];
+    // final tabs = [
+    //   Tab(
+    //     text: l10nOptions.requestsText,
+    //     icon: const Icon(Icons.network_check),
+    //   ),
+    //   Tab(
+    //     text: l10nOptions.responsesText,
+    //     icon: const Icon(Icons.list),
+    //   ),
+    //   Tab(
+    //     text: l10nOptions.errorsText,
+    //     icon: const Icon(Icons.error),
+    //   ),
+    // ];
 
-    final tabBarViews = [
-      FancyDioTabView(
-        components: _requests,
-        l10nOptions: l10nOptions,
-        tileOptions: tileOptions,
-        customButtonBuilder: customButtonBuilder,
-      ),
-      FancyDioTabView(
-        components: _responses,
-        l10nOptions: l10nOptions,
-        tileOptions: tileOptions,
-        customButtonBuilder: customButtonBuilder,
-      ),
-      FancyDioTabView(
-        components: _errors,
-        l10nOptions: l10nOptions,
-        tileOptions: tileOptions,
-        customButtonBuilder: customButtonBuilder,
-      ),
-    ];
+    // final tabBarViews = [
+    //   FancyDioTabView(
+    //     components: _requests,
+    //     l10nOptions: l10nOptions,
+    //     tileOptions: tileOptions,
+    //     customButtonBuilder: customButtonBuilder,
+    //   ),
+    //   FancyDioTabView(
+    //     components: _responses,
+    //     l10nOptions: l10nOptions,
+    //     tileOptions: tileOptions,
+    //     customButtonBuilder: customButtonBuilder,
+    //   ),
+    //   FancyDioTabView(
+    //     components: _errors,
+    //     l10nOptions: l10nOptions,
+    //     tileOptions: tileOptions,
+    //     customButtonBuilder: customButtonBuilder,
+    //   ),
+    // ];
 
-    return DefaultTabController(
-      length: tabs.length,
-      child: Theme(
-        data: themeData ?? context.currentTheme,
-        child: Scaffold(
-          appBar: AppBar(
-            centerTitle: true,
-            title: Text(l10nOptions.appBarText),
-            // bottom: TabBar(tabs: tabs),
-            leading: leading,
-            actions: actions,
-          ),
-          // body: TabBarView(children: tabBarViews),
-          body: _buildBody(),
+    return Theme(
+      data: themeData ?? context.currentTheme,
+      child: Scaffold(
+        appBar: AppBar(
+          centerTitle: true,
+          title: Text(l10nOptions.appBarText),
+          // bottom: TabBar(tabs: tabs),
+          leading: leading,
+          actions: actions,
         ),
+        // body: TabBarView(children: tabBarViews),
+        body: _buildBody(),
       ),
     );
   }
 
   Widget _buildBody() {
     return ListView.separated(
+      itemCount: _responseAndErrors.length,
       itemBuilder: (context, index) {
         final model = _responseAndErrors[index];
         return ListTile(
-          title: Text(model.url),
+          title: Text(
+            model.url,
+            style: Theme.of(context).textTheme.bodyLarge,
+          ),
           onTap: () {
             // 假设你有一个详情页，比如 NetworkDetailPage
             Navigator.of(context).push(
@@ -118,8 +119,7 @@ class HttpScopeView extends StatelessWidget {
           },
         );
       },
-      separatorBuilder: (context, index) => const Divider(height: 3),
-      itemCount: _responseAndErrors.length,
+      separatorBuilder: (context, index) => const Divider(height: 1),
     );
   }
 }

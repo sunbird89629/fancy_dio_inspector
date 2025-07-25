@@ -1,6 +1,6 @@
 import 'package:fancy_dio_inspector_personal/fancy_dio_inspector_personal.dart';
 import 'package:fancy_dio_inspector_personal/src/models/network/network_base_model.dart';
-import 'package:fancy_dio_inspector_personal/src/ui/ui.dart';
+import 'package:fancy_dio_inspector_personal/src/ui/widgets/http_item_widget.dart';
 import 'package:fancy_dio_inspector_personal/src/utils/extensions/extensions.dart';
 import 'package:flutter/material.dart';
 
@@ -27,7 +27,6 @@ class HttpDetailPage extends StatelessWidget {
           centerTitle: true,
           title: Text(l10nOptions.appBarText),
           // leading: leading,
-          // actions: actions,
         ),
         body: HttpScopeItemWidget(model: model),
       ),
@@ -46,10 +45,13 @@ class HttpScopeItemWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      child: FancyDioTabViewItem(
-        tileOptions: const FancyDioInspectorTileOptions(),
-        l10nOptions: const FancyDioInspectorL10nOptions(),
-        component: model,
+      child: ColoredBox(
+        color: const Color.fromARGB(255, 238, 235, 239),
+        child: HttpItemWiget(
+          tileOptions: const FancyDioInspectorTileOptions(),
+          l10nOptions: const FancyDioInspectorL10nOptions(),
+          component: model,
+        ),
       ),
     );
   }
