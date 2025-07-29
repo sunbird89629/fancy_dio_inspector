@@ -19,6 +19,7 @@ class PannelWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           title,
+          const SizedBox(height: 8),
           content,
         ],
       ),

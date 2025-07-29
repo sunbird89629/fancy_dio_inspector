@@ -37,10 +37,6 @@ class _MyAppState extends State<MyApp> {
     }
   }
 
-  Future<void> mockSuccessHttpRequest() async {
-    final response = await DioClient.instance.mockSuccessHttpRequest();
-  }
-
   void openDioInspector(BuildContext context) {
     Navigator.push(
       context,
@@ -84,8 +80,16 @@ class _MyAppState extends State<MyApp> {
                 const SizedBox(height: 16),
                 const SizedBox(height: 8),
                 ElevatedButton(
-                  onPressed: mockSuccessHttpRequest,
+                  onPressed: () {
+                    DioClient.instance.mockSuccessHttpRequest();
+                  },
                   child: const Text('Mock success Http'),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    DioClient.instance.mockFailHttpRequest();
+                  },
+                  child: const Text('Mock fail Http'),
                 ),
                 ElevatedButton(
                   onPressed: login,
@@ -150,6 +154,17 @@ class DioClient {
 
   Future<dynamic> mockSuccessHttpRequest() async {
     const url = "https://api.test.yoofinds.com/api/campaign-products/qMjYbP";
+    try {
+      final response = await _dio.get(url);
+      return response;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  Future<dynamic> mockFailHttpRequest() async {
+    const url =
+        "https://api.test.yoofinds.com/api/campaign-products/qMjYbPmockdd";
     try {
       final response = await _dio.get(url);
       return response;

@@ -1,6 +1,6 @@
 import 'package:fancy_dio_inspector_personal/src/loggers/fancy_dio_logger.dart';
 import 'package:fancy_dio_inspector_personal/src/models/models.dart';
-import 'package:fancy_dio_inspector_personal/src/ui/views/http_detail_page.dart';
+import 'package:fancy_dio_inspector_personal/src/ui/widgets/http_record_item_widget.dart';
 import 'package:fancy_dio_inspector_personal/src/ui/widgets/widgets.dart';
 import 'package:fancy_dio_inspector_personal/src/utils/extensions/extensions.dart';
 import 'package:flutter/material.dart';
@@ -39,11 +39,11 @@ class HttpScopeView extends StatelessWidget {
 
   FancyDioLogger get _logger => FancyDioLogger.instance;
 
-  List<NetworkRequestModel> get _requests => _logger.apiRequests;
-  List<NetworkResponseModel> get _responses => _logger.apiResponses;
-  List<NetworkErrorModel> get _errors => _logger.apiErrors;
+  // List<NetworkRequestModel> get _requests => _logger.apiRequests;
+  // List<NetworkResponseModel> get _responses => _logger.apiResponses;
+  // List<NetworkErrorModel> get _errors => _logger.apiErrors;
 
-  List<NetworkBaseModel> get _responseAndErrors => [..._responses, ..._errors];
+  // List<NetworkBaseModel> get _responseAndErrors => [..._responses, ..._errors];
 
   @override
   Widget build(BuildContext context) {
@@ -101,25 +101,18 @@ class HttpScopeView extends StatelessWidget {
 
   Widget _buildBody() {
     return ListView.separated(
-      itemCount: _responseAndErrors.length,
+      separatorBuilder: (context, index) => const Divider(
+        height: 3,
+        thickness: 1,
+        color: Color.fromARGB(255, 238, 235, 239),
+        indent: 20,
+        endIndent: 12,
+      ),
+      itemCount: _logger.records.length,
       itemBuilder: (context, index) {
-        final model = _responseAndErrors[index];
-        return ListTile(
-          title: Text(
-            model.url,
-            style: Theme.of(context).textTheme.bodyLarge,
-          ),
-          onTap: () {
-            // 假设你有一个详情页，比如 NetworkDetailPage
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) => HttpDetailPage(model: model),
-              ),
-            );
-          },
-        );
+        final model = _logger.records[index];
+        return HttpRecordItemWidget(model: model);
       },
-      separatorBuilder: (context, index) => const Divider(height: 1),
     );
   }
 }

@@ -2,6 +2,7 @@ import 'dart:developer' as developer;
 
 import 'package:dio/dio.dart';
 import 'package:fancy_dio_inspector_personal/src/models/models.dart';
+import 'package:fancy_dio_inspector_personal/src/models/network/http_record.dart';
 import 'package:fancy_dio_inspector_personal/src/utils/enums/enums.dart';
 import 'package:fancy_dio_inspector_personal/src/utils/extensions/extensions.dart';
 import 'package:flutter/foundation.dart';
@@ -17,6 +18,8 @@ class FancyDioLogger {
   List<NetworkRequestModel> _apiRequests = [];
   List<NetworkResponseModel> _apiResponses = [];
   List<NetworkErrorModel> _apiErrors = [];
+
+  final List<HttpRecord> _records = [];
 
   List<NetworkRequestModel> get apiRequests => [..._apiRequests];
   List<NetworkResponseModel> get apiResponses => [..._apiResponses];
@@ -45,6 +48,7 @@ class FancyDioLogger {
       }
 
       _apiRequests = _apiRequests.take(options.maxLogs).toList();
+      _records.insert(0, HttpRecord(requestOptions: data, startTime: now));
     } else if (data is Response) {
       final responseModel = NetworkResponseModel(
         url: data.createUrlComponent(),
@@ -63,8 +67,12 @@ class FancyDioLogger {
       if (consoleOptions.verbose) {
         consoleLog(model: responseModel);
       }
-
       _apiResponses = _apiResponses.take(options.maxLogs).toList();
+      final record = _records.firstWhere(
+        (element) => element.requestOptions == data.requestOptions,
+      );
+      record.response = data;
+      record.endTime = now;
     } else if (data is DioException) {
       final errorModel = NetworkErrorModel(
         url: data.createUrlComponent(),
@@ -85,6 +93,12 @@ class FancyDioLogger {
       }
 
       _apiErrors = _apiErrors.take(options.maxLogs).toList();
+
+      final record = _records.firstWhere(
+        (element) => element.requestOptions == data.requestOptions,
+      );
+      record.dioException = data;
+      record.endTime = now;
     } else {
       throw Exception('Invalid type!');
     }
@@ -136,4 +150,6 @@ class FancyDioLogger {
       );
     }
   }
+
+  List<HttpRecord> get records => _records;
 }

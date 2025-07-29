@@ -40,7 +40,6 @@ class FancyDioInterceptor extends Interceptor {
       logger.log(response);
       onResponseCreated?.call(response);
     }
-
     handler.next(response);
   }
 
