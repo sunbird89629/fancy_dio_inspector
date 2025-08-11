@@ -1,5 +1,6 @@
 import 'package:fancy_dio_inspector_personal/src/models/network/http_record.dart';
 import 'package:fancy_dio_inspector_personal/src/theme/fancy_colors.dart';
+import 'package:fancy_dio_inspector_personal/src/ui/widgets/curl_widget.dart';
 import 'package:fancy_dio_inspector_personal/src/ui/widgets/error_body_widget.dart';
 import 'package:fancy_dio_inspector_personal/src/ui/widgets/overview_widget.dart';
 import 'package:fancy_dio_inspector_personal/src/ui/widgets/request_header_widget.dart';
@@ -36,9 +37,10 @@ class HttpDetailPage extends StatelessWidget {
               spacing: 8,
               children: [
                 OverviewWidget(model: model),
+                _buildResultWidget(),
+                CurlWidget(model: model),
                 RequestHeaderWidget(model: model),
                 ResponseHeaderWidget(model: model),
-                _buildResultWidget(),
                 const SizedBox(height: 80),
               ],
             ),
