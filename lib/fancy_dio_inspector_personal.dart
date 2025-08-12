@@ -1,4 +1,4 @@
-library fancy_dio_inspector;
+library fancy_dio_inspector_personal;
 
 export 'src/interceptors/interceptors.dart';
 export 'src/models/fancy_dio_inspector/fancy_dio_inspector_console_options.dart';
