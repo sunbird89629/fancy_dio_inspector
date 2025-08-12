@@ -1,8 +1,6 @@
 name: fancy_dio_inspector_personal
-description: A modified version of the Dio HTTP inspector, forked from the original fancy_dio_inspector.
-homepage: https://github.com/your_username/your_repo
-repository: https://github.com/your_username/your_repo
-issue_tracker: https://github.com/your_username/your_repo/issues
+description: A lightweight in-app inspector for Dio HTTP requests and responses.
+
 
 version: 1.0.1
 

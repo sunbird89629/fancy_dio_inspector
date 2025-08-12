@@ -1,8 +1,8 @@
-## Fancy Dio Inspector (Personal Fork)
+## Fancy Dio Inspector
 
 A lightweight in-app inspector for `Dio` that logs every request, response and error, and provides a UI to browse details, headers and bodies, as well as copy a ready-to-run cURL command.
 
-> This is a personal fork maintained by [sunbird89629](https://github.com/sunbird89629). Big thanks to the original authors of `fancy_dio_inspector`.
+
 
 <img src="assets/screenshots/screenshot_1.png" alt="Fancy Dio Inspector screenshot" height="500" />
 
@@ -177,14 +177,6 @@ flutter test
 ## License
 
 This project is licensed under the terms of the MIT License. See `LICENSE` for details.
-
----
-
-## Credits
-
-- Original project: `fancy_dio_inspector` (gokhancvs)
-- Authors: Gökhan Çavuş, Yakup Emeksiz
-- Contributions: Patrick Chrestin
 
 ---
 
