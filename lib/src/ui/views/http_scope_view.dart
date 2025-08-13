@@ -124,7 +124,6 @@ class HttpScopeView extends StatelessWidget {
               onLongPress: () {
                 FancyDioLogger.instance.records.clear();
                 mainDataProvider.httpRecords = FancyDioLogger.instance.records;
-                // httpRecords.value = FancyDioLogger.instance.records;
               },
               icon: const Icon(Icons.clear_all),
             ),

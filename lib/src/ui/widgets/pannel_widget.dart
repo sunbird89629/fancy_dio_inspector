@@ -13,13 +13,12 @@ class PannelWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      padding: const EdgeInsets.all(8),
       color: const Color(0xffFEF7FF),
       child: Column(
+        spacing: 8,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           title,
-          const SizedBox(height: 8),
           content,
         ],
       ),

@@ -17,12 +17,13 @@ class OverviewWidget extends StatelessWidget {
       title: Row(
         children: [
           Container(
+            margin: const EdgeInsets.symmetric(vertical: 12),
             width: 4,
             color: FancyColors.turquoise,
             height: 20,
           ),
           const SizedBox(
-            width: 16,
+            width: 8,
           ),
           Text(
             'Overview',
@@ -33,22 +34,25 @@ class OverviewWidget extends StatelessWidget {
           ),
         ],
       ),
-      content: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            model.requestOptions.method,
-            style: Theme.of(context).textTheme.titleMedium,
-          ),
-          Text(
-            model.requestOptions.uri.toString(),
-            style: Theme.of(context).textTheme.titleMedium,
-          ),
-          Text(
-            model.requestOptions.contentType ?? '',
-            style: Theme.of(context).textTheme.titleMedium,
-          ),
-        ],
+      content: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 8),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              model.requestOptions.method,
+              style: Theme.of(context).textTheme.titleMedium,
+            ),
+            Text(
+              model.requestOptions.uri.toString(),
+              style: Theme.of(context).textTheme.titleMedium,
+            ),
+            Text(
+              model.requestOptions.contentType ?? '',
+              style: Theme.of(context).textTheme.titleMedium,
+            ),
+          ],
+        ),
       ),
     );
   }

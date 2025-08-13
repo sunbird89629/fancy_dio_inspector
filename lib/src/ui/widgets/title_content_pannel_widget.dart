@@ -17,25 +17,28 @@ class TitleContentPannelWidget extends StatelessWidget {
       title: Row(
         children: [
           Container(
+            margin: const EdgeInsets.symmetric(vertical: 12),
             width: 4,
             color: FancyColors.turquoise,
             height: 20,
           ),
           const SizedBox(
-            width: 16,
+            width: 8,
           ),
           Text(
             title,
-            style: Theme.of(context)
-                .textTheme
-                .titleLarge!
-                .copyWith(fontWeight: FontWeight.bold),
+            style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                  fontWeight: FontWeight.bold,
+                ),
           ),
         ],
       ),
-      content: Text(
-        content,
-        style: Theme.of(context).textTheme.bodyMedium,
+      content: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 12),
+        child: Text(
+          content,
+          style: Theme.of(context).textTheme.bodyMedium,
+        ),
       ),
     );
   }
