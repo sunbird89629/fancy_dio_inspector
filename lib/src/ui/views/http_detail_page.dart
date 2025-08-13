@@ -6,6 +6,7 @@ import 'package:fancy_dio_inspector_personal/src/ui/widgets/overview_widget.dart
 import 'package:fancy_dio_inspector_personal/src/ui/widgets/request_header_widget.dart';
 import 'package:fancy_dio_inspector_personal/src/ui/widgets/response_body_widget.dart';
 import 'package:fancy_dio_inspector_personal/src/ui/widgets/response_header_widget.dart';
+import 'package:fancy_dio_inspector_personal/src/ui/widgets/title_bar_action_widget.dart';
 import 'package:fancy_dio_inspector_personal/src/utils/extensions/extensions.dart';
 import 'package:flutter/material.dart';
 
@@ -29,7 +30,12 @@ class HttpDetailPage extends StatelessWidget {
           backgroundColor: model.statusColor,
           centerTitle: true,
           title: Text(model.requestOptions.uri.pathSegments.last),
-          actions: [],
+          actions: [
+            TitleBarActionWidget(
+              iconData: Icons.bookmark_add_rounded,
+              onPressed: () {},
+            ),
+          ],
         ),
         body: SingleChildScrollView(
           child: ColoredBox(
