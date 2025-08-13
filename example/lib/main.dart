@@ -54,12 +54,6 @@ class _MyAppState extends State<MyApp> {
       MaterialPageRoute(
         builder: (context) => HttpScopeView(
           leading: CloseButton(onPressed: Navigator.of(context).pop),
-          actions: [
-            IconButton(
-              onPressed: () {},
-              icon: const Icon(Icons.filter_list_alt),
-            )
-          ],
         ),
       ),
     );

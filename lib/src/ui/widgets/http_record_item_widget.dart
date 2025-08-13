@@ -61,7 +61,9 @@ class HttpRecordItemWidget extends StatelessWidget {
           model.requestOptions.uri.path,
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
-          style: Theme.of(context).textTheme.titleSmall,
+          style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                fontWeight: FontWeight.w500,
+              ),
         ),
         trailing: const Icon(Icons.keyboard_arrow_right),
         contentPadding: const EdgeInsets.only(right: 2),
