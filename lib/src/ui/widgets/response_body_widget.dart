@@ -12,7 +12,7 @@ class ResponseBodyWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TitleContentPannelWidget(
-      title: 'Response Body',
+      title: 'Response Body ( ${model.contentType} )',
       content: model.prettyJsonResponseBody,
     );
   }

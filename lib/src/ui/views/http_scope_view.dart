@@ -89,7 +89,14 @@ class HttpScopeView extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: const Text('HttpRecords'),
+          title: ListenableBuilder(
+            listenable: mainDataProvider,
+            builder: (context, child) {
+              return Text(
+                'HttpRecords( ${mainDataProvider.httpRecords.length} )',
+              );
+            },
+          ),
           // bottom: TabBar(tabs: tabs),
           leading: leading,
           actions: [
@@ -138,8 +145,8 @@ class HttpScopeView extends StatelessWidget {
             height: 3,
             thickness: 1,
             color: Color.fromARGB(255, 238, 235, 239),
-            indent: 20,
-            endIndent: 12,
+            indent: 30,
+            endIndent: 20,
           ),
           itemCount: mainDataProvider.httpRecords.length,
           itemBuilder: (context, index) {

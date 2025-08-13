@@ -72,4 +72,11 @@ class HttpRecord {
       return '';
     }
   }
+
+  String get contentType {
+    // try{
+    //   return response?.headers['content-type']![0].split(":")[0];
+    // }
+    return response?.headers['content-type']?[0].split(';')[0] ?? '';
+  }
 }
