@@ -1,6 +1,7 @@
 import 'package:fancy_dio_inspector_personal/src/loggers/fancy_dio_logger.dart';
 import 'package:fancy_dio_inspector_personal/src/providers/main_data_provider.dart';
 import 'package:fancy_dio_inspector_personal/src/ui/widgets/http_record_item_widget.dart';
+import 'package:fancy_dio_inspector_personal/src/ui/widgets/title_bar_action_widget.dart';
 import 'package:fancy_dio_inspector_personal/src/ui/widgets/widgets.dart';
 import 'package:fancy_dio_inspector_personal/src/utils/extensions/extensions.dart';
 import 'package:flutter/material.dart';
@@ -38,52 +39,8 @@ class HttpScopeView extends StatelessWidget {
     this.customButtonBuilder,
   });
 
-  // FancyDioLogger get _logger => FancyDioLogger.instance;
-
-  // List<NetworkRequestModel> get _requests => _logger.apiRequests;
-  // List<NetworkResponseModel> get _responses => _logger.apiResponses;
-  // List<NetworkErrorModel> get _errors => _logger.apiErrors;
-
-  // List<NetworkBaseModel> get _responseAndErrors => [..._responses, ..._errors];
-
   @override
   Widget build(BuildContext context) {
-    // final tabs = [
-    //   Tab(
-    //     text: l10nOptions.requestsText,
-    //     icon: const Icon(Icons.network_check),
-    //   ),
-    //   Tab(
-    //     text: l10nOptions.responsesText,
-    //     icon: const Icon(Icons.list),
-    //   ),
-    //   Tab(
-    //     text: l10nOptions.errorsText,
-    //     icon: const Icon(Icons.error),
-    //   ),
-    // ];
-
-    // final tabBarViews = [
-    //   FancyDioTabView(
-    //     components: _requests,
-    //     l10nOptions: l10nOptions,
-    //     tileOptions: tileOptions,
-    //     customButtonBuilder: customButtonBuilder,
-    //   ),
-    //   FancyDioTabView(
-    //     components: _responses,
-    //     l10nOptions: l10nOptions,
-    //     tileOptions: tileOptions,
-    //     customButtonBuilder: customButtonBuilder,
-    //   ),
-    //   FancyDioTabView(
-    //     components: _errors,
-    //     l10nOptions: l10nOptions,
-    //     tileOptions: tileOptions,
-    //     customButtonBuilder: customButtonBuilder,
-    //   ),
-    // ];
-
     return Theme(
       data: themeData ?? context.currentTheme,
       child: Scaffold(
@@ -100,11 +57,12 @@ class HttpScopeView extends StatelessWidget {
           // bottom: TabBar(tabs: tabs),
           leading: leading,
           actions: [
-            IconButton(
+            TitleBarActionWidget(
+              iconData: Icons.tune,
               onPressed: () {},
-              icon: const Icon(Icons.tune),
             ),
-            IconButton(
+            TitleBarActionWidget(
+              iconData: Icons.clear_all,
               onPressed: () {
                 ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(
@@ -125,7 +83,6 @@ class HttpScopeView extends StatelessWidget {
                 FancyDioLogger.instance.records.clear();
                 mainDataProvider.httpRecords = FancyDioLogger.instance.records;
               },
-              icon: const Icon(Icons.clear_all),
             ),
           ],
         ),

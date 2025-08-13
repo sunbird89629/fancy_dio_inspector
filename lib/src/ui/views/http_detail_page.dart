@@ -29,6 +29,7 @@ class HttpDetailPage extends StatelessWidget {
           backgroundColor: model.statusColor,
           centerTitle: true,
           title: Text(model.requestOptions.uri.pathSegments.last),
+          actions: [],
         ),
         body: SingleChildScrollView(
           child: ColoredBox(
