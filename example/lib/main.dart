@@ -54,9 +54,7 @@ class _MyAppState extends State<MyApp> {
       MaterialPageRoute(
         builder: (context) => HttpScopeView(
           leading: CloseButton(onPressed: Navigator.of(context).pop),
-          viewConfig: HttpScopeViewConfig(
-            recordFilter: (record) => record.response?.statusCode == 200,
-          ),
+          viewConfig: const HttpScopeViewConfig(),
         ),
       ),
     );
