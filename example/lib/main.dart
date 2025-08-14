@@ -37,16 +37,16 @@ class _MyAppState extends State<MyApp> {
     }
   }
 
-  void openDioInspector(BuildContext context) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => FancyDioInspectorView(
-          leading: CloseButton(onPressed: Navigator.of(context).pop),
-        ),
-      ),
-    );
-  }
+  // void openDioInspector(BuildContext context) {
+  //   Navigator.push(
+  //     context,
+  //     MaterialPageRoute(
+  //       builder: (context) => FancyDioInspectorView(
+  //         leading: CloseButton(onPressed: Navigator.of(context).pop),
+  //       ),
+  //     ),
+  //   );
+  // }
 
   void openHttpScopePage(BuildContext context) {
     Navigator.push(
