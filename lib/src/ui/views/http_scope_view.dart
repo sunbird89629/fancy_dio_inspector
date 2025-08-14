@@ -1,3 +1,4 @@
+import 'package:fancy_dio_inspector_personal/src/interceptors/http_scope_view_config.dart';
 import 'package:fancy_dio_inspector_personal/src/loggers/fancy_dio_logger.dart';
 import 'package:fancy_dio_inspector_personal/src/providers/main_data_provider.dart';
 import 'package:fancy_dio_inspector_personal/src/ui/widgets/http_record_item_widget.dart';
@@ -27,22 +28,25 @@ class HttpScopeView extends StatelessWidget {
 
   /// The theme data for the view. If this is `null`, `FancyThemeData` will be
   /// used.
-  final ThemeData? themeData;
+  // final ThemeData? themeData;
 
   final FancyItemCustomButtonBuilder? customButtonBuilder;
 
+  final HttpScopeViewConfig viewConfig;
+
   const HttpScopeView({
+    super.key,
     this.leading,
     this.actions,
-    this.themeData,
-    super.key,
+    // this.themeData,
     this.customButtonBuilder,
+    this.viewConfig = const HttpScopeViewConfig(),
   });
 
   @override
   Widget build(BuildContext context) {
     return Theme(
-      data: themeData ?? context.currentTheme,
+      data: context.currentTheme,
       child: Scaffold(
         appBar: AppBar(
           centerTitle: true,
@@ -96,6 +100,12 @@ class HttpScopeView extends StatelessWidget {
     return ListenableBuilder(
       listenable: mainDataProvider,
       builder: (context, child) {
+        final httpRecords = mainDataProvider.httpRecords
+            .where(
+              (record) => viewConfig.recordFilter?.call(record) ?? true,
+            )
+            .toList();
+
         return ListView.separated(
           separatorBuilder: (context, index) => const Divider(
             height: 3,
@@ -104,9 +114,9 @@ class HttpScopeView extends StatelessWidget {
             indent: 30,
             endIndent: 20,
           ),
-          itemCount: mainDataProvider.httpRecords.length,
+          itemCount: httpRecords.length,
           itemBuilder: (context, index) {
-            final model = mainDataProvider.httpRecords[index];
+            final model = httpRecords[index];
             return HttpRecordItemWidget(model: model);
           },
         );
