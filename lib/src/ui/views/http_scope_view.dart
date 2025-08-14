@@ -6,7 +6,7 @@ import 'package:fancy_dio_inspector_personal/src/ui/widgets/title_bar_action_wid
 import 'package:fancy_dio_inspector_personal/src/ui/widgets/widgets.dart';
 import 'package:fancy_dio_inspector_personal/src/utils/extensions/extensions.dart';
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher_string.dart';
+import 'package:flutter/services.dart';
 
 final mainDataProvider = MainDataProvider(
   httpRecords: FancyDioLogger.instance.records,
@@ -67,7 +67,37 @@ class HttpScopeView extends StatelessWidget {
               onPressed: () {
                 final url = viewConfig.manualUrl ??
                     'https://github.com/sunbird89629/fancy_dio_inspector/blob/main/manual.md';
-                launchUrlString(url);
+                final opener = viewConfig.onOpenManual;
+                if (opener != null) {
+                  opener(url);
+                  return;
+                }
+                // Fallback: show dialog with copy-to-clipboard
+                showDialog<void>(
+                  context: context,
+                  builder: (ctx) {
+                    return AlertDialog(
+                      title: const Text('打开使用手册'),
+                      content: SelectableText(url),
+                      actions: [
+                        TextButton(
+                          onPressed: () {
+                            Clipboard.setData(ClipboardData(text: url));
+                            Navigator.of(ctx).pop();
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(content: Text('链接已复制')),
+                            );
+                          },
+                          child: const Text('复制链接'),
+                        ),
+                        TextButton(
+                          onPressed: () => Navigator.of(ctx).pop(),
+                          child: const Text('关闭'),
+                        ),
+                      ],
+                    );
+                  },
+                );
               },
             ),
             TitleBarActionWidget(
