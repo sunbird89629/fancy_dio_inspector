@@ -6,6 +6,7 @@ import 'package:fancy_dio_inspector_personal/src/ui/widgets/title_bar_action_wid
 import 'package:fancy_dio_inspector_personal/src/ui/widgets/widgets.dart';
 import 'package:fancy_dio_inspector_personal/src/utils/extensions/extensions.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 final mainDataProvider = MainDataProvider(
   httpRecords: FancyDioLogger.instance.records,
@@ -61,6 +62,14 @@ class HttpScopeView extends StatelessWidget {
           // bottom: TabBar(tabs: tabs),
           leading: leading,
           actions: [
+            TitleBarActionWidget(
+              iconData: Icons.help_outline,
+              onPressed: () {
+                final url = viewConfig.manualUrl ??
+                    'https://github.com/sunbird89629/fancy_dio_inspector/blob/main/manual.md';
+                launchUrlString(url);
+              },
+            ),
             TitleBarActionWidget(
               iconData: Icons.tune,
               onPressed: () {},
