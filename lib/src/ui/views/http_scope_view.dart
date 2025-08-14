@@ -66,7 +66,7 @@ class HttpScopeView extends StatelessWidget {
               iconData: Icons.help_outline,
               onPressed: () {
                 final url = viewConfig.manualUrl ??
-                    'https://github.com/sunbird89629/fancy_dio_inspector/blob/main/manual.md';
+                    'https://github.com/sunbird89629/fancy_dio_inspector/blob/main/docs/manual.md';
                 final opener = viewConfig.onOpenManual;
                 if (opener != null) {
                   opener(url);

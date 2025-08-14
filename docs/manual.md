@@ -55,7 +55,7 @@ const HttpScopeView(
 
 ## 使用 GitHub Pages 渲染本手册
 
-1. 推送本文件至仓库（文件名为 `manual.md`）。
+1. 推送本文件至仓库（文件路径为 `docs/manual.md`）。
 2. 在 GitHub 仓库的 Settings → Pages 中启用 Pages：
    - 如果使用 “Deploy from a branch”，建议选择分支 `main`，文件夹 `docs` 或 `root`（若选择 `docs`，请将本文件放至 `docs/manual.md`）。
    - 或选择 “GitHub Actions” 以使用 Actions 部署静态站点（Jekyll/静态渲染均可）。
@@ -63,5 +63,5 @@ const HttpScopeView(
    - `https://sunbird89629.github.io/fancy_dio_inspector/manual`（Jekyll 会将 `.md` 转为 HTML）。
 4. 将该地址配置到 `HttpScopeViewConfig.manualUrl`，应用内标题栏帮助按钮即可打开。
 
-> 备注：若暂未启用 GitHub Pages，默认会打开仓库内的 `manual.md` 文件地址：
-> `https://github.com/sunbird89629/fancy_dio_inspector/blob/main/manual.md`
+> 备注：若暂未启用 GitHub Pages，默认会打开仓库内的 `docs/manual.md` 文件地址：
+> `https://github.com/sunbird89629/fancy_dio_inspector/blob/main/docs/manual.md`
