@@ -3,7 +3,6 @@ import 'package:fancy_dio_inspector_personal/src/loggers/fancy_dio_logger.dart';
 import 'package:fancy_dio_inspector_personal/src/providers/main_data_provider.dart';
 import 'package:fancy_dio_inspector_personal/src/ui/widgets/http_record_item_widget.dart';
 import 'package:fancy_dio_inspector_personal/src/ui/widgets/title_bar_action_widget.dart';
-import 'package:fancy_dio_inspector_personal/src/ui/widgets/widgets.dart';
 import 'package:fancy_dio_inspector_personal/src/utils/extensions/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -31,8 +30,6 @@ class HttpScopeView extends StatelessWidget {
   /// used.
   // final ThemeData? themeData;
 
-  final FancyItemCustomButtonBuilder? customButtonBuilder;
-
   final HttpScopeViewConfig viewConfig;
 
   const HttpScopeView({
@@ -40,7 +37,6 @@ class HttpScopeView extends StatelessWidget {
     this.leading,
     this.actions,
     // this.themeData,
-    this.customButtonBuilder,
     this.viewConfig = const HttpScopeViewConfig(),
   });
 
