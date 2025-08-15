@@ -13,28 +13,28 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       id-token: write
+    uses: dart-lang/setup-dart/.github/workflows/publish.yml@v1
+    # steps:
+    #   - name: Checkout repository
+    #     uses: actions/checkout@v4
 
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+    #   - name: Setup Flutter SDK
+    #     uses: flutter-actions/setup-flutter@v4
+    #     with:
+    #       channel: stable
+    #       version: '3.29.2'
 
-      - name: Setup Flutter SDK
-        uses: flutter-actions/setup-flutter@v4
-        with:
-          channel: stable
-          version: '3.29.2'
+    #   - name: Install dependencies
+    #     run: flutter pub get
 
-      - name: Install dependencies
-        run: flutter pub get
+    #   # - name: Check code style
+    #   #   run: dart analyze
 
-      # - name: Check code style
-      #   run: dart analyze
+    #   - name: Authenticate with pub.dev via OIDC
+    #     uses: dart-lang/setup-dart@v1
+    #     with:
+    #       sdk: stable
+    #   - run: dart pub login --verbose  # OIDC 自动授权
 
-      - name: Authenticate with pub.dev via OIDC
-        uses: dart-lang/setup-dart@v1
-        with:
-          sdk: stable
-      - run: dart pub login --verbose  # OIDC 自动授权
-
-      - name: Publish to pub.dev
-        run: dart pub publish --force
+    #   - name: Publish to pub.dev
+    #     run: dart pub publish --force
