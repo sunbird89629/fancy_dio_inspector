@@ -7,28 +7,17 @@ on:
 
 jobs:
   publish:
-    runs-on: ubuntu-latest
     permissions:
       id-token: write
     # uses: dart-lang/setup-dart/.github/workflows/publish.yml@v1
+    runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Setup Flutter SDK
-        uses: flutter-actions/setup-flutter@v4
-        with:
-          channel: stable
-          version: '3.29.2'
-
+      - uses: actions/checkout@v3
+      - uses: flutter-actions/setup-flutter@v4
       - name: Install dependencies
         run: flutter pub get
-
-      - name: Authenticate with pub.dev via OIDC
-        run: dart pub login --verbose
-
-      - name: Publish to pub.dev
-        run: dart pub publish --skip-validation --force
+      - name: Publish
+        run: dart pub publish --force
 
 
 

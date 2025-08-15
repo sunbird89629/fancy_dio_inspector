@@ -2,7 +2,7 @@ name: fancy_dio_inspector_personal
 description: A lightweight in-app inspector for Dio HTTP requests and responses.
 
 
-version: 1.0.1
+version: 1.0.2
 
 screenshots:
   - description: "Fancy Dio Inspector"
