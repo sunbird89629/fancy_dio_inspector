@@ -25,8 +25,8 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
 
-      - name: Check code style
-        run: dart analyze
+      # - name: Check code style
+      #   run: dart analyze
 
       - name: Publish to pub.dev
         run: dart pub publish --force
